@@ -1,0 +1,66 @@
+package com.mycompany.unifacs;
+public class Carro {
+    private int ano;
+    private String modelo;
+    private String nome;
+    private String grupo;
+    private float km;
+
+    public Carro(int ano, String nome, String modelo, String grupo, float km) {
+        this.setAno(ano);
+        this.setNome(nome); 
+        this.setModelo(modelo);
+        this.setGrupo(grupo);
+        this.setKm(km);
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    public float getKm() {
+        return km;
+    }
+
+    public void setKm(float km) {
+        this.km = km;
+    }
+    public void nome(){}
+    
+    public void status(){
+        System.out.println("====CARRO====");
+        System.out.println("Ano:"+this.getAno());
+        System.out.println("Nome:"+this.getNome());
+        System.out.println("Modelo:"+this.getModelo());
+        System.out.println("Grupo:"+this.getGrupo());
+        System.out.println("Quilometragem:"+this.getKm()+" Km");
+    }
+}
