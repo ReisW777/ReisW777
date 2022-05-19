@@ -1,0 +1,62 @@
+Scanner input = new Scanner(System.in);
+        ArrayList<Carro> c1= new ArrayList();
+        boolean repetir = true;
+        while(repetir){
+        System.out.println("====CONCESSIONARIA DO REIS====");
+        System.out.println("(1)Cadastrar carro");
+        System.out.println("(2)Listar Carro");
+        System.out.println("(3)Remover Carro");
+        System.out.println("(4)Sair");
+        
+        int opcao = input.nextInt();
+        
+        switch(opcao){
+            case 1:
+                Scanner carro = new Scanner(System.in);
+                System.out.println("===CADASTRAR===");
+                System.out.println("Digite o ANO do carro");
+                int ano = carro.nextInt();
+                System.out.println("Digite o MODELO do carro");
+                String modelo = carro.next();
+                System.out.println("Digite o NOME do carro");
+                String nome = carro.nextLine();
+                System.out.println("Digite o NOME do carro");
+                String grupo = carro.nextLine();
+                System.out.println("Digite a QUILOMETRAGEM do carro");
+                float km = input.nextFloat();
+                System.out.println("Digite o ID do carro");
+                int id = carro.nextInt();
+                Carro c2 = new Carro();
+                c2.setAno(ano);
+                c2.setModelo(modelo);
+                c2.setGrupo(grupo);
+                c2.setNome(nome);
+                c2.setKm(km);
+                c2.setId(id);
+                
+                c1.add(c2);
+                break;
+            case 2:
+                System.out.println("====CADASTRADOS====");
+                for(int i = 0;i < c1.size();i++){
+                    Carro c3 = c1.get(i);
+                    System.out.println("carro de numero:"+i);
+                    c3.status();
+                    break;
+               
+                }
+            case 3:     
+                System.out.println("===REMOVER===");
+               for(int i = 0;i < c1.size();i++){
+                    Carro c3 = c1.get(i);
+                    System.out.println("carro de numero:"+i);
+                    c3.status();       
+               }
+                Scanner remover = new Scanner(System.in);
+                System.out.println("remover carro desejado");
+                int tirar = remover.nextInt();
+    
+                }
+                    break;
+                 
+                }
