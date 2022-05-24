@@ -1,101 +1,148 @@
-import java.util.ArrayList;
+package com.mycompany.unifacs;
 import java.util.Scanner;
-public class Principal {
+import java.util.ArrayList;
+
+public class Principal { /*O projeto desenvolvido por nosso grupo, teve como objetivo criar um menu para uma concessonaria ficcticia, 
+ fazendo assim que ela possa ter uma certa facilidade seja para registrar os seus carros ate a procura pelos carros ja registrados*/
+    
+
+    private static String Carro;
+
     public static void main(String[] args) {
+        
+        /*Esses são os carros pre-registrados que ja fazem parte da concessionaria, para uso de testes do sistema são bem uteis*/
+        Carro carro1 = new Carro(2002, "Sedã", "Classic", "Chevrolet", 20000, "BRA-4721");
+        Carro carro2 = new Carro(2020, "Sedã", "HB20", "Hyundai", 1500, "BRA-8742");
+        Carro carro3 = new Carro(2010, "Hatch", "Fox", "volksvagem", 12000, "BRA-965");
+        Carro carro4 = new Carro(2022, "SUV", "Jeep Compass", "Jeep", 0, "BRA-4502");
+        Carro carro5 = new Carro(2010, "Minivan", "Zafira", "Chevrolet", 1000, "BRA-2053");
+        Carro carro6 = new Carro(2010, "Perua", "Kombi Standart", "Volksvagem", 40000, "BRA-7954");
+        Carro carro7 = new Carro(2010, "Picape", "Oroch", "Renault", 0, "BRA-5896");
+        
+        
         Scanner input = new Scanner(System.in);
-        ArrayList<Carro> c1= new ArrayList();
+        ArrayList<Carro> c1 = new ArrayList();
         boolean repetir = true;
-        while(repetir){
-        System.out.println("====CONCESSIONARIA DO REIS====");
-        System.out.println("(1)Cadastrar carro");
-        System.out.println("(2)Listar carro");
-        System.out.println("(3)Pesquisar carro");
-        System.out.println("(4)Remover Carro");
-        System.out.println("(5)Sair");
-        
-        int opcao = input.nextInt();
-        
-        switch(opcao){
-            case 1:
-                Scanner carro = new Scanner(System.in);
-                System.out.println("===CADASTRAR===");
-                System.out.println("Digite o ANO do carro");
-                int ano = carro.nextInt();
-                System.out.println("Digite o MODELO do carro");
-                String modelo = carro.next();
-                System.out.println("Digite o NOME do carro");
-                String nome = carro.next();
-                System.out.println("Digite o GRUPO do carro");
-                String grupo = carro.next();
-                System.out.println("Digite a QUILOMETRAGEM do carro");
-                float km = input.nextFloat();
-                System.out.println("Digite o ID do carro");
-                int id = carro.nextInt();
-                Carro c2 = new Carro();
-                c2.setAno(ano);
-                c2.setModelo(modelo);
-                c2.setGrupo(grupo);
-                c2.setNome(nome);
-                c2.setKm(km);
-                c2.setId(id);
-                
-                c1.add(c2);
-                break;
-            case 2:
-                System.out.println("====CADASTRADOS====");
-                for(int i = 0;i < c1.size();i++){
-                     Carro carroId = c1.get(i);
-                    System.out.println("Carro de referencia numero:"+ i);
-                     System.out.println("====CARRO====");
-                    System.out.println("Ano:"+carroId.getAno());
-                    System.out.println("Nome:"+carroId.getNome());
-                    System.out.println("Modelo:"+carroId.getModelo());
-                    System.out.println("Grupo:"+carroId.getGrupo());
-                    System.out.println("Quilometragem:"+carroId.getId()+" Km");
-                   System.out.println("id:"+carroId.getId());
-                    break;    
-                }
-            case 3:    
-                Scanner pesquisa = new Scanner(System.in);
-                System.out.println("====PESQUISAR====");
-                System.out.println("Digite o id do carro que deseja");
-                int idCarro = pesquisa.nextInt();
-                for(int i=0;i< c1.size();i++){
-                    Carro carroId = c1.get(i);
-                    if(idCarro == carroId.getId()){
-                        System.out.println("Carro Encontrado");
-                        System.out.println("====CARRO====");
-                    System.out.println("Ano:"+carroId.getAno());
-                    System.out.println("Nome:"+carroId.getNome());
-                    System.out.println("Modelo:"+carroId.getModelo());
-                    System.out.println("Grupo:"+carroId.getGrupo());
-                    System.out.println("Quilometragem:"+carroId.getId()+" Km");
-                   System.out.println("id:"+carroId.getId());
+
+        /*Esses são os  7 carros sendo adicionados ao sistema atraves de uma arraylist, 
+        cada um com seus aributos ja definidos como visto no pre-registro la em cima*/
+        c1.add(carro1);
+        c1.add(carro2);
+        c1.add(carro3);
+        c1.add(carro4);
+        c1.add(carro5);
+        c1.add(carro6);
+        c1.add(carro7);
+
+        /*Aqui descdimos utilizar o sistema de repetição while porque seria de uso mais pratico
+        e com menos chances  de ocorrer qualquer tipo de erro em questão a repetição*/
+        while (repetir) {
+            
+            /*Esse é o menu do sistema onde o usuario tem ate 5 opções distintas*/
+            System.out.println("====CONCESSIONARIA OLD BARRERO====");
+            System.out.println("(1)Cadastrar carro");
+            System.out.println("(2)Listar carro");
+            System.out.println("(3)Pesquisar carro");
+            System.out.println("(4)Remover Carro");
+            System.out.println("(5)Sair");
+
+            int opcao = input.nextInt();
+
+            /*Fizemos a utilização do switch para deixar um sistema mais coerente, onde vai ter inicio meio e fim(opcional)*/
+            switch (opcao) {
+                case 1:/*a primeira opção entra como a central de registro do sistema, onde
+                    o usuario vai poder adicionar os seus proprios atributos a o seu carro*/
+                     
+                    Scanner carro = new Scanner(System.in);
+                    System.out.println("===CADASTRAR===");
+                    System.out.println("Digite o ANO do carro: ");
+                    int ano = carro.nextInt();
+                    System.out.println("Digite o MODELO do carro: ");
+                    String modelo = carro.next();
+                    System.out.println("Digite o NOME do carro: ");
+                    String nome = carro.next();
+                    System.out.println("Digite o FABRICANTE do carro: ");
+                    String grupo = carro.next();
+                    System.out.println("Digite a QUILOMETRAGEM do carro: ");
+                    float km = input.nextFloat();
+                    System.out.println("Digite a Placa: ");
+                    String placa = carro.next();
+                    System.out.println("Carro registrado");
+                    
+                    Carro c2 = new Carro();/*Carro no qual o usuario registrou*/
+                    c2.setAno(ano);
+                    c2.setModelo(modelo);
+                    c2.setFabricante(grupo);
+                    c2.setNome(nome);
+                    c2.setKm(km);
+                    c2.setPlaca(placa);
+                    c1.add(c2);
+
+                    break;
+                case 2: /*A segunda opção fica responsavel por listar todos os carros pre-registrados e registrados*/
+                    System.out.println("====CARROS CADASTRADOS====");
+                   for (Carro carroId : c1) { /*Sistema de repetição for para conseguir reproduxir todos os carros contidos no ArrayList*/
+                        
+                       carroId.registrado();/*Esse metodo tem como objetivo de verificar se 
+                            tem o carro existente registrado no sistema e apresentalo caso esteja contido*/
                     }
-                }
-                break;
-            case 4:
-                Scanner remover = new Scanner(System.in);
-                System.out.println("===REMOVER===");
-                for(int i=0;i< c1.size();i++){
-                    Carro carroId = c1.get(i);
-                    System.out.println("Carro de referencia numero:"+ i);
-                     System.out.println("====CARRO====");
-                    System.out.println("Ano:"+carroId.getAno());
-                    System.out.println("Nome:"+carroId.getNome());
-                    System.out.println("Modelo:"+carroId.getModelo());
-                    System.out.println("Grupo:"+carroId.getGrupo());
-                    System.out.println("Quilometragem:"+carroId.getId()+" Km");
-                   System.out.println("id:"+carroId.getId());
-                }
-                System.out.println("Digite o valor da referencia");
-                int referencia = remover.nextInt();
-                c1.remove(referencia);
-                break;
-            case 5:
-                repetir = false;
-                break;
-            default:
-               System.out.println("Opção inexstente");
+                    break;
+                case 3:/*A terceira opção tem como papel de mostrar o carro desejado por meio da sua placa*/
+
+                    Scanner pesquisa = new Scanner(System.in);
+                    /*Neste campo o usuario vai informar a placa do carro desejado quue esteja registrado na concessionaria*/
+                    System.out.println("====PESQUISAR CARROS====");
+                    System.out.println("Digite a placa do carro que deseja");
+                    String idCarro = pesquisa.next();
+
+                    for (Carro carroId : c1) {/*Os carros existentes serão acoplados nesse  forEach*/
+                        if (idCarro.equals(carroId.getPlaca())) {
+                           System.out.println("Carro Encontrado");
+                            carroId.registrado();/*Esse metodo tem como objetivo de verificar se 
+                            tem o carro existente registrado no sistema e apresentalo caso esteja contido*/
+                        }
+                       }
+                    
+                    break;
+                case 4:/*A quarta opção tem como a funcionalidade de remover os carros ja registrados por meio de sua referencia(posição no ArrayList)*/
+                    
+                    Scanner remover = new Scanner(System.in);
+                    System.out.println("===REMOVER===");
+
+                    for (int i = 0; i < c1.size(); i++) { /*O sistema de repetição vai imprimir todos os carros registrados para o usuario
+                        descidir qual carro deseja remover*/
+                        Carro carrop = c1.get(i);
+                        System.out.println("====CARRO====");
+                        System.out.println("-------Carro de referencia numero:" + i + "-------");/*a referencia sera informada pwlo sistema ao usuario 
+                        para que possa saber a referencia do seu carro desejado para a retirada do mesmo no sistema de cadastro*/
+                        System.out.println("Ano: 2" + carrop.getAno());
+                        System.out.println("Nome: " + carrop.getNome());
+                        System.out.println("Modelo: " + carrop.getModelo());
+                        System.out.println("Grupo: " + carrop.getFabricante());
+                        System.out.println("Quilometragem: " + carrop.getKm() + " Km");
+                        System.out.println("Placa do carro: " + carrop.getPlaca());
+                        System.out.println("Digite o valor da referencia");
+
+                    }
+                    int referencia = remover.nextInt();
+                    try { /*caso o carro esteja contido sera removido*/
+                        c1.remove(referencia);
+                        System.out.println("Carro Removido");
+
+                    } catch (Exception e) { /*caso o carro não esteja contido sera jogado para repetição das opções*/
+                        System.out.println("Falha ao remover carro, tente novamente");
+                    }
+                    break;
+
+                case 5:/*a quinta opção define a saida e encerramento do sistema sistema*/
+                    
+                    System.out.println("VOLTE SEMPRE!");
+                  repetir=false;
+                    break;
+                default:/*Caso o usuario colocque alguma opção inexistente sera informado*/
+                    System.out.println("Opção inexstente");
+            }
+
         }
-        }
+    }
+}
