@@ -112,17 +112,9 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     for (int i = 0; i < c1.size(); i++) { /*O sistema de repetição vai imprimir todos os carros registrados para o usuario
                         descidir qual carro deseja remover*/
                         Carro carrop = c1.get(i);
-                        System.out.println("====CARRO====");
-                        System.out.println("-------Carro de referencia numero:" + i + "-------");/*a referencia sera informada pwlo sistema ao usuario 
+                        System.out.println("\n-------Carro de referencia numero:" + i + "-------");/*a referencia sera informada pwlo sistema ao usuario 
                         para que possa saber a referencia do seu carro desejado para a retirada do mesmo no sistema de cadastro*/
-                        System.out.println("Ano: 2" + carrop.getAno());
-                        System.out.println("Nome: " + carrop.getNome());
-                        System.out.println("Modelo: " + carrop.getModelo());
-                        System.out.println("Grupo: " + carrop.getFabricante());
-                        System.out.println("Quilometragem: " + carrop.getKm() + " Km");
-                        System.out.println("Placa do carro: " + carrop.getPlaca());
-                        System.out.println("Digite o valor da referencia");
-
+                        carrop.registrado();
                     }
                     int referencia = remover.nextInt();
                     try { /*caso o carro esteja contido sera removido*/
