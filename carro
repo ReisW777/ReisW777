@@ -1,3 +1,4 @@
+package com.mycompany.unifacs;
 public class Carro {
  private String placa;
         private int ano;
@@ -73,12 +74,13 @@ public class Carro {
         public void nome() {
         }
       public void registrado(){
-          System.out.println("====CARRO====");
+          System.out.println("====[CARRO]====");
           System.out.println("Ano:" + this.getAno());
           System.out.println("Nome:" + this.getNome());
           System.out.println("Modelo:" + this.getModelo());
           System.out.println("Grupo:" + this.getFabricante());
           System.out.println("Quilometragem:" + this.getKm() + " Km");
           System.out.println("placa do carro:" + this.getPlaca());
+          System.out.println("===================");
       }
     }
