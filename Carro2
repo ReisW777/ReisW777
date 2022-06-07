@@ -101,14 +101,19 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     System.out.println("====PESQUISAR CARROS====");                                                                                          
                     System.out.println("Digite a placa do carro que deseja");                                                                                
                     String idCarro = pesquisa.next();                                                                                                        
-                                                                                                                                                             
+                      boolean encontrado = false;                                                                                                                                      
                     for (Carro carroId : c1) {/*Os carros existentes serão acoplados nesse forEach*/                                                         
                         if (idCarro.equals(carroId.getPlaca())) {                                                                                            
                             System.out.println("Carro Encontrado");                                                                                          
                             carroId.registrado();/*Esse metodo tem como objetivo de verificar se                                                             
-                            tem o carro existente registrado no sistema e apresentalo caso esteja contido*/                                                  
+                            tem o carro existente registrado no sistema e apresentalo caso esteja contido*/   
+                            encontrado = true;
+                            break;
                         }                                                                                                                                    
-                    }                                                                                                                                        
+                    }   
+                     if(!encontrado){
+                           System.out.println("Carro não encontrado");
+                       }
                                                                                                                                                              
                     break;                                                                                                                                   
                 case 4:/*A quarta opção tem como a funcionalidade de remover os carros ja registrados por meio de sua referencia(posição no ArrayList)*/     
