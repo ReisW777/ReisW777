@@ -1,86 +1,28 @@
-package com.mycompany.unifacs;
-public class Carro {
- private String placa;
-        private int ano;
-        private String modelo;
-        private String nome;
-        private String fabricante;
-        private float km;
+public class Automovel {/* Classe pai */
+    protected String motor;
+    protected String pintura;
+    protected String cambio;
 
-        public Carro(int ano, String modelo, String nome, String fabricante, float km, String placa) {
-            this.ano = ano;
-            this.modelo = modelo;
-            this.nome = nome;
-            this.fabricante = fabricante;
-            this.km = km;
-            this.placa = placa;
-
-        }
-
-        public Carro() {
-
-        }
-
-
-        public String getPlaca() {
-            return placa;
-        }
-
-        public void setPlaca(String placa) {
-            this.placa = placa;
-        }
-
-
-        public int getAno() {
-            return ano;
-        }
-
-        public void setAno(int ano) {
-            this.ano = ano;
-        }
-
-        public String getModelo() {
-            return modelo;
-        }
-
-        public void setModelo(String modelo) {
-            this.modelo = modelo;
-        }
-
-        public String getNome() {
-            return nome;
-        }
-
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
-
-        public String getFabricante() {
-            return fabricante;
-        }
-
-        public void setFabricante(String fabricante) {
-            this.fabricante = fabricante;
-        }
-
-        public float getKm() {
-            return km;
-        }
-
-        public void setKm(float km) {
-            this.km = km;
-        }
-
-        public void nome() {
-        }
-      public void registrado(){
-          System.out.println("====[CARRO]====");
-          System.out.println("Ano:" + this.getAno());
-          System.out.println("Nome:" + this.getNome());
-          System.out.println("Modelo:" + this.getModelo());
-          System.out.println("Grupo:" + this.getFabricante());
-          System.out.println("Quilometragem:" + this.getKm() + " Km");
-          System.out.println("placa do carro:" + this.getPlaca());
-          System.out.println("===================");
-      }
+    public String getPintura() {/*metodo acessor para armazenar a pintura modificada*/
+        return pintura;
     }
+
+    public void setPintura(String pintura) {/*metodo acessor para modificar a pintura do automovel*/
+        this.pintura = pintura;
+    }
+
+    public String getCambio() {/*metodo acessor para armazenar o câmbio modificado (automatico ou manual)*/
+        return cambio;
+    }
+
+    public void setCambio(String cambio) {/*metodo acessor para modificar o câmbio do automovel (automatico ou manual) */
+        this.cambio = cambio;
+    }
+    public String getMotor() {/*metodo acessor para armazenar o motor do automovel*/
+        return motor;
+    }
+
+    public void setMotor(String motor) {/*metodo acessor para modificar o motor do automovel*/
+        this.motor = motor;
+    }
+}
