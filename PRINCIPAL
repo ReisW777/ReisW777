@@ -1,5 +1,10 @@
+   
+package com.mycompany.unifacs;
+
+import com.mycompany.unifacs.Comparator.ComparatorCrescente;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Principal { /*O projeto desenvolvido por nosso grupo, teve como objetivo criar um menu para uma concessonaria ficcticia,
  fazendo assim que possa ter uma certa facilidade seja para registrar os seus carros ate a procura pelos carros ja registrados*/
@@ -87,8 +92,8 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     c2.setCambio(cambio);
                     c2.setPintura(pintura);
                     c1.add(c2);
-
                     break;/* o "break" foi utilizado para parar a declaração da case acima*/
+                    
                 case 2: /*A segunda opção fica responsavel por listar todos os carros pre-registrados e registrados*/
                     System.out.println("CARROS CADASTRADOS");
                     /*os carros são apresentados em formato tabular contendo três de suas informações*/
@@ -96,20 +101,21 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     System.out.printf("%5s %20s %20s ", "Ano", "Nome", "Placa");
                     System.out.println();
                     System.out.println("===============================================================================");
+                    
+                    Collections.sort(c1, new ComparatorCrescente());
                     for (int i = 0; i < c1.size(); i++) { /*Sistema de repetição for para conseguir reproduzir todos os carros contidos no ArrayList*/
                         Carro carroId = c1.get(i);
                         System.out.format("%5s %20s %20s ", carroId.getAno(), carroId.getNome(), carroId.getPlaca());
                         System.out.println();
-
                     }
                     System.out.println("===========================================================================");
 
-
                     break;/* o "break" foi utilizado para parar a declaração da case acima*/
+                    
                 case 3:/*A terceira opção tem como papel de mostrar o carro desejado por meio da sua placa*/
 
                     Scanner pesquisa = new Scanner(System.in);
-                    /*Neste campo o usuario vai informar a placa do carro desejado quue esteja registrado na concessionaria*/
+                    /*Neste campo o usuario vai informar a placa do carro desejado que esteja registrado na concessionaria*/
                     System.out.println("====PESQUISAR CARROS====");
                     System.out.println("Digite a placa do carro que deseja");
                     String idCarro = pesquisa.next();
@@ -118,7 +124,7 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     for (int i = 0; i < c1.size(); i++) {/*Os carros existentes serão acoplados nesse forEach*/
                         Carro carroId = c1.get(i);
 
-                        if (idCarro.equals(carroId.getPlaca())) {
+                        if (idCarro.equals(carroId.getPlaca())){
                             System.out.println("Carro Encontrado");
                             carroId.registrado();/*Esse metodo tem como objetivo de verificar se
                             tem} o carro existente registrado no sistema e apresentalo caso esteja contido*/
@@ -134,84 +140,116 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                 case 4:/*A quarta opção tem como a funcionalidade de remover os carros ja registrados por meio de sua referencia(posição no ArrayList)*/
                     Scanner remover = new Scanner(System.in);
                     System.out.println("===REMOVER===");
+                    System.out.println("Digite a placa do carro que deseja remover");
+                     String plCar = remover.next();
+                     
+                      boolean encontrado1 = false;
                     for (int i = 0; i < c1.size(); i++) { /*O sistema de repetição vai imprimir todos os carros registrados para o usuario
                         descidir qual carro deseja remover*/
                         Carro carrop = c1.get(i);
-                        System.out.println("====CARRO====");
-                        System.out.println("-------Carro de referencia numero:" + i + "-------");/*a referencia sera informada pwlo sistema ao usuario
-                        para que possa saber a referencia do seu carro desejado para a retirada do mesmo no sistema de cadastro*/
-                        System.out.println("Ano:" + carrop.getAno());
-                        System.out.println("Nome:" + carrop.getNome());
-                        System.out.println("Modelo:" + carrop.getModelo());
-                        System.out.println("Grupo:" + carrop.getFabricante());
-                        System.out.println("Quilometragem:" + carrop.getKm() + " Km");
-                        System.out.println("Placa:" + carrop.getPlaca());
-                        System.out.println("Motor:"+carrop.getMotor());
-                        System.out.println("cambio:"+carrop.getCambio());
-                        System.out.println("pintura:"+carrop.getPintura());
-                        System.out.println("Digite o valor da referencia (Somente numeros de referência)");
-
-                    }
-                    int referencia = remover.nextInt();
-                    try { /*caso o carro esteja contido sera removido*/
+                        
+                    if (plCar.equals(carrop.getPlaca())){
+                            System.out.println("Carro Encontrado");
+                        carrop.registrado();
+                        encontrado1 = true;
                         System.out.println("Se você quer remover esse carro digite (1) se não digite (2)");
                         int  confirmacao = remover.nextInt();
                         if(confirmacao == 1){ /*instrução condicional para confirmaçao de remoçao do carro*/
-                            c1.remove(referencia);
+                            c1.remove(carrop);
                             System.out.println("Carro Removido");/*mensagem de remoção*/
                             break;
-                        }else if(confirmacao != 2){/*operador com a segunda opçao de nao remoção do carro*/
+                        }else if(confirmacao == 2){/*operador com a segunda opçao de nao remoção do carro*/
                             System.out.println("Remoção cancelada");
-                        }
-                    } catch (Exception e) { /*caso o carro não esteja contido sera jogado para repetição das opções*/
-                        System.out.println("Falha ao remover carro, tente novamente");
+                            break;
+                        }       
                     }
-
-                    break;/* o "break" foi utilizado para parar a declaração da case acima*/
+                    
+                        }
+                    if(!encontrado1){
+                             System.out.println("Carro inexistente");
+                        }
+                    
+                    break;
                     
                 case 5:/*a quinta opção entra como a central de modificador do sistema, onde
                     o usuario vai poder modificar os  atributos do seu carro*/
-                    
                     Scanner modificar = new Scanner(System.in);
                     System.out.println("====MODIFICAR====");
+                    System.out.println("Digite a placa do carro que deseja para modificar");
+                    String cmd = modificar.next();
+                    
+                    boolean encontrado2 = false;
                     for (int i = 0; i < c1.size(); i++) {
-                        Carro carroId = c1.get(i);
-                        System.out.println("["+i+"]"+carroId.getNome()+"|"+carroId.getPlaca());
-                    }
-                    System.out.println("Digite a referencia do carro que deseja modificar");
-                    int referencia1 = modificar.nextInt();
-                    modificar.nextLine();
-                    System.out.println("insira o novo Ano do carro (contendo apenas numeros): ");
-                    int ano1 = modificar.nextInt();
-                    System.out.println("insira o novo Modelo do carro: ");
-                    String modelo1 = modificar.next();
-                    System.out.println("insira o novo Nome do carro: ");
-                    String nome1 = modificar.next();
-                    System.out.println("insira o novo fabricante do carro: ");
-                    String grupo1 = modificar.next();
-                    System.out.println("insira a quilometragem atual do carro: ");
-                    float km1 = modificar.nextFloat();
-                    System.out.println("insira a nova placa do carro: ");
-                    String placa1 = modificar.next();
-                    System.out.println("insira o nome do motor atual:");
-                    String motor1 = modificar.next();
-                    System.out.println("insira o tipo de câmbio do carro:");
-                    String cambio1 = modificar.next();
-                    System.out.println("insira a nova pintura (cor) do carro:");
-                    String pintura1 = modificar.next();
+                       Carro carmd = c1.get(i);
+                       carmd.registrado();
+                       if(cmd.equals(carmd.getPlaca())){
+                    System.out.println("Oque deseja modificar?");
+                    System.out.println("(1)ano do carro");
+                    System.out.println("(2)modelo do carro");
+                    System.out.println("(3)nome do carro");
+                    System.out.println("(4)fabricante do carro");
+                    System.out.println("(5)quilometragem do carro");
+                    System.out.println("(6)placa do carro");
+                    System.out.println("(7)motor do carro");
+                    System.out.println("(8)cambio do carro");
+                     System.out.println("(9)pintura do carro"); 
+                    int selecao = modificar.nextInt();
+                           switch (selecao) {
+                               case 1:
+                                   System.out.println("insira o novo Ano do carro (contendo apenas numeros): ");
+                                   int ano1 = modificar.nextInt();
+                                   carmd.setAno(ano1);
+                                   break;
+                               case 2:
+                                   System.out.println("insira o novo Modelo do carro: ");
+                                   String modelo1 = modificar.next();
+                                   carmd.setModelo(modelo1);
+                                   break;
+                               case 3:
+                                   System.out.println("insira o novo Nome do carro: ");
+                                   String nome1 = modificar.next();
+                                   carmd.setNome(nome1);
+                                   break;
+                               case 4:
+                                   System.out.println("insira o novo fabricante do carro: ");
+                                   String grupo1 = modificar.next();
+                                   carmd.setFabricante(grupo1);
+                                   break;
+                               case 5:
+                                   System.out.println("insira a quilometragem atual do carro: ");
+                                   float km1 = modificar.nextFloat();
+                                   carmd.setKm(km1);
+                                   break;
+                               case 6:
+                                   System.out.println("insira a nova placa do carro: ");
+                                   String placa1 = modificar.next();
+                                   carmd.setPlaca(placa1);
+                                   break;
+                               case 7:
+                                   System.out.println("insira o nome do motor atual:");
+                                   String motor1 = modificar.next();
+                                   carmd.setMotor(motor1);
+                                   break;
+                               case 8:
+                                   System.out.println("insira o tipo de câmbio do carro:");
+                                   String cambio1 = modificar.next();
+                                   carmd.setCambio(cambio1);
+                                   break;
+                               case 9:
+                                   System.out.println("insira a nova pintura (cor) do carro:");
+                                   String pintura1 = modificar.next();
+                                   carmd.setPintura(pintura1);
+                                   break;
+                               default:
+                                   break;
+                           }
                     System.out.println("Carro modificado com sucesso");
-
-                    Carro c5 = c1.get(referencia1);/*Carro no qual o usuario modificou e assim ficara alterado no registro do sistema*/
-                    c5.setAno(ano1);
-                    c5.setModelo(modelo1);
-                    c5.setFabricante(grupo1);
-                    c5.setNome(nome1);
-                    c5.setKm(km1);
-                    c5.setPlaca(placa1);
-                    c5.setMotor(motor1);
-                    c5.setCambio(cambio1);
-                    c5.setPintura(pintura1);
-
+                    encontrado2=true;
+                    break;
+                    }
+                    }
+                    if(!encontrado2){
+                     System.out.println("Carro inexistente");                 }
                         break;/*o "break" foi utilizado para parar a declaração da case acima*/
                         
                 case 6:/*a quinta opção define a saida e encerramento do sistema sistema*/
@@ -220,7 +258,7 @@ public class Principal { /*O projeto desenvolvido por nosso grupo, teve como obj
                     repetir=false;
                     break;/* o "break" foi utilizado para parar a declaração da case acima*/
                 default:/*Caso o usuario colocque alguma opção inexistente sera informado*/
-                    System.out.println("Opção inexstente");
+                    System.out.println("Opção inexistente");
             }
         }
     }
