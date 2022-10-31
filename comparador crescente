@@ -1,0 +1,15 @@
+package com.mycompany.unifacs.Comparator;
+import com.mycompany.unifacs.Carro;
+import java.util.Comparator;
+
+public class ComparatorCrescente implements Comparator<Carro>{
+
+    @Override
+    public int compare(Carro carro1, Carro carro2) {
+        if(carro1.getNome().compareTo(carro2.getNome())>0){
+            return 1;
+        }
+        return-1;
+    }
+    
+}
