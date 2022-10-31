@@ -1,28 +1,29 @@
-public class Automovel {/* Classe pai */
+package com.mycompany.unifacs;
+public class Automovel {
     protected String motor;
     protected String pintura;
     protected String cambio;
 
-    public String getPintura() {/*metodo acessor para armazenar a pintura modificada*/
+    public String getPintura() {
         return pintura;
     }
 
-    public void setPintura(String pintura) {/*metodo acessor para modificar a pintura do automovel*/
+    public void setPintura(String pintura) {
         this.pintura = pintura;
     }
 
-    public String getCambio() {/*metodo acessor para armazenar o câmbio modificado (automatico ou manual)*/
+    public String getCambio() {
         return cambio;
     }
 
-    public void setCambio(String cambio) {/*metodo acessor para modificar o câmbio do automovel (automatico ou manual) */
+    public void setCambio(String cambio) {
         this.cambio = cambio;
     }
-    public String getMotor() {/*metodo acessor para armazenar o motor do automovel*/
+    public String getMotor() {
         return motor;
     }
 
-    public void setMotor(String motor) {/*metodo acessor para modificar o motor do automovel*/
+    public void setMotor(String motor) {
         this.motor = motor;
     }
 }
