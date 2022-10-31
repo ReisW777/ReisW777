@@ -1,86 +1,91 @@
-public class Carro extends Automovel{ /* classe filha herdando atributos da classe pai.*/
-    private String placa;/*placa do carro*/
-    private int ano;/*ano do modelo do carro*/
-    private String modelo;/*modelo do carro*/
-    private String nome;/*nome do carro*/
-    private String fabricante;/*fabricante do carro*/
-    private float km;/*quilometragem rodada do carro*/
+package com.mycompany.unifacs;
+public class Carro extends Automovel {
+ private String placa;
+        private int ano;
+        private String modelo;
+        private String nome;
+        private String fabricante;
+        private float km;
 
-    public Carro(int ano, String modelo, String nome, String fabricante, float km, String placa,String motor,String cambio,String pintura) {/*Construtor para adicionar os carros registrados*/
-        this.ano = ano;/*ano do modelo do carro*/
-        this.modelo = modelo;/*modelo do carro*/
-        this.nome = nome;/*nome do carro*/
-        this.fabricante = fabricante;/*fabricante do carro*/
-        this.km = km;/*quilometragem rodada do carro*/
-        this.placa = placa;/*placa do carro*/
-        super.setMotor(motor);/*Atributo herdado da classe pai (Motor) */
-        super.setCambio(cambio);/*Atributo herdado da classe pai (Câmbio) */
-        super.setPintura(pintura);/*Atributo herdado da classe pai (Pintura) */
+        public Carro(int ano, String modelo, String nome, String fabricante, float km, String placa,String motor,String cambio,String pintura) {
+            this.ano = ano;
+            this.modelo = modelo;
+            this.nome = nome;
+            this.fabricante = fabricante;
+            this.km = km;
+            this.placa = placa;
+            super.setMotor(motor);
+            super.setCambio(cambio);
+            super.setPintura(pintura);
+        }
+
+        public Carro() {
+
+        }
+
+
+        public String getPlaca() {
+            return placa;
+        }
+
+        public void setPlaca(String placa) {
+            this.placa = placa;
+        }
+
+
+        public int getAno() {
+            return ano;
+        }
+
+        public void setAno(int ano) {
+            this.ano = ano;
+        }
+
+        public String getModelo() {
+            return modelo;
+        }
+
+        public void setModelo(String modelo) {
+            this.modelo = modelo;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public String getFabricante() {
+            return fabricante;
+        }
+
+        public void setFabricante(String fabricante) {
+            this.fabricante = fabricante;
+        }
+
+        public float getKm() {
+            return km;
+        }
+
+        public void setKm(float km) {
+            this.km = km;
+        }
+
+        public void nome() {
+        }
+      public void registrado(){
+          System.out.println("====[CARRO]====");
+          System.out.println("Ano:" + this.getAno());
+          System.out.println("Nome:" + this.getNome());
+          System.out.println("Modelo:" + this.getModelo());
+          System.out.println("Grupo:" + this.getFabricante());
+          System.out.println("Quilometragem:" + this.getKm() + " Km");
+          System.out.println("placa do carro:" + this.getPlaca());
+          System.out.println("motor:"+super.getMotor());
+          System.out.println("cambio:"+super.getCambio());
+          System.out.println("pintura:"+super.getPintura());
+          System.out.println("===================");
+      }
     }
-
-    public Carro() {
-
-    }
-
-    public String getPlaca() { /*metodo acessor para armazenar a placa modificada*/
-        return placa;
-    }
-
-    public void setPlaca(String placa) {/*metodo acessor para modificar a placa*/
-        this.placa = placa;
-    }
-
-
-    public int getAno() {/*metodo acessor para armazenar o ano modificado*/
-        return ano;
-    }
-
-    public void setAno(int ano) {/*metodo acessor para modificar o ano*/
-        this.ano = ano;
-    }
-
-    public String getModelo() {/*metodo acessor para armazenar o modelo modificado*/
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {/*metodo acessor para modificar o modelo*/
-        this.modelo = modelo;
-    }
-
-    public String getNome() {/*metodo acessor para armazenar o nome modificado*/
-        return nome;
-    }
-
-    public void setNome(String nome) {/*metodo acessor para modificar o nome*/
-        this.nome = nome;
-    }
-
-    public String getFabricante() {/*metodo acessor para armazenar a fabricante modificada*/
-        return fabricante;
-    }
-
-    public void setFabricante(String fabricante) {/*metodo acessor para modificar o Fabricante*/
-        this.fabricante = fabricante;
-    }
-
-    public float getKm() {/*metodo acessor para armazenar a quilometragem modificada*/
-        return km;
-    }
-
-    public void setKm(float km) {/*metodo acessor para modificar a quilometragem*/
-        this.km = km;
-    }
-    public void registrado(){//metodo para imprimir os carros registrados
-        System.out.println("====[CARRO]====");
-        System.out.println("Ano:" + this.getAno());/*impressao do ano*/
-        System.out.println("Nome:" + this.getNome());/*impressao do nome*/
-        System.out.println("Modelo:" + this.getModelo());/*impressao do modelo*/
-        System.out.println("Grupo:" + this.getFabricante());/*impressao da marca fabricante do carro*/
-        System.out.println("Quilometragem:" + this.getKm() + " Km");/*impressao da quilometragem rodada pelo carro*/
-        System.out.println("placa do carro:" + this.getPlaca());/*impressao da placa utilizada no carro*/
-        System.out.println("motor:"+super.getMotor());/*impressao do motor utilizado no carro*/
-        System.out.println("cambio:"+super.getCambio());/*impressao do tipo do câmbio do carro*/
-        System.out.println("pintura:"+super.getPintura());/*impressao da cor de pintura do carro*/
-        System.out.println("===================");
-    }
-}                                                                                                                        
